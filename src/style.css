@@ -1,0 +1,97 @@
+:root {
+    /* iOS 配色 */
+    --ios-bg: #F2F2F7;           /* 系统背景灰 */
+    --ios-card: rgba(255, 255, 255, 0.5); /* 毛玻璃卡片 */
+    --ios-white: #ffffff;
+    --ios-text: #000000;
+    --ios-text-secondary: #8E8E93;
+    --ios-blue: #007AFF;
+    --ios-orange: #FF9500;
+    --ios-red: #FF3B30;
+    --ios-green: #34C759;
+
+    /* 阴影 */
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+    --shadow-md: 0 8px 24px rgba(0,0,0,0.08);
+
+    /* 圆角 */
+    --radius-lg: 24px;
+    --radius-md: 16px;
+    --radius-sm: 10px;
+}
+
+.dark {
+    --ios-bg: #121212;           /* 纯黑背景 */
+    --ios-card: rgba(28, 28, 30, 0.6); /* 深灰毛玻璃 */
+    --ios-white: #1C1C1E;        /* 卡片背景变深 */
+    --ios-text: #FFFFFF;         /* 文字变白 */
+    --ios-text-secondary: #98989D;
+
+    /* 调整阴影，深色模式阴影通常更重或改为内发光，这里简单调整透明度 */
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.2);
+    --shadow-md: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+/* 针对深色模式的一些特殊微调 */
+.dark input {
+    color: #fff;
+    background: #2C2C2E !important; /* 输入框变深灰 */
+}
+
+.dark .wallpaper-blur {
+    opacity: 0.3; /* 深色模式下光斑暗一点，更有氛围感 */
+    filter: blur(100px); /* 光斑更模糊 */
+}
+
+body {
+    margin: 0;
+    background-color: var(--ios-bg);
+    /* 核心：使用系统字体 San Francisco */
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+    color: var(--ios-text);
+    -webkit-font-smoothing: antialiased; /* 抗锯齿 */
+
+    -webkit-user-select: none; /* Safari / Chrome */
+    user-select: none;         /* 标准属性 */
+    cursor: default;           /* 鼠标放在文字上不再变成 'I' 字型，而是保持箭头 */
+}
+
+/* 隐藏滚动条但保留功能 */
+::-webkit-scrollbar {
+    width: 6px;  /* 纵向滚动条宽 6px */
+    height: 6px; /* 横向滚动条高 6px */
+}
+
+/* 2. 滚动条轨道 (透明，不显示背景) */
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* 3. 滚动条滑块 (浅色模式：半透明黑) */
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 10px; /* 圆角 */
+}
+
+/* 4. 鼠标悬停时，滑块变深一点，提示可拖动 */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* 👇👇👇 深色模式适配 👇👇👇 */
+/* 当 body 有 .dark 类时，滑块变成半透明白 */
+.dark ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+button { border: none; cursor: pointer; font-family: inherit; }
+input, textarea {
+    font-family: inherit;
+    -webkit-user-select: text;
+    user-select: text;
+    cursor: text; /* 鼠标放在输入框上显示 'I' 字型 */
+}
