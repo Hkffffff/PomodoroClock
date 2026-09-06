@@ -1,38 +1,45 @@
 # PomodoroClock
 
-This template should help get you started developing with Vue 3 in Vite.
+一个基于 `Vue 3 + Vite + Electron` 的番茄钟桌面应用，界面采用卡带播放器风格，支持番茄钟计时、任务管理、统计和主题切换。
 
-## Recommended IDE Setup
+## 项目结构
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- `src/main.js`：前端入口，挂载 `Vue` 应用和 `Pinia`
+- `src/App.vue`：主布局，组合顶部栏、计时器、统计和待办区域
+- `src/components/`：界面组件目录
+  - `CassettePlayer.vue`：番茄钟主计时器
+  - `TapeRack.vue`、`DraggableTape.vue`、`TapeCreator.vue`：任务/计时器卡带交互
+  - `TodoList.vue`、`TodoItem.vue`：待办任务列表
+  - `TotalStats.vue`：统计面板
+  - `AppTitleBar.vue`：自定义窗口标题栏
+- `src/stores/appStore.js`：应用状态管理，包含计时、任务、主题和本地存储逻辑
+- `src/assets/`：提示音等静态资源
+- `public/`：应用图标等静态文件
+- `electron/`：Electron 主进程与预加载脚本
+- `dist/`：前端构建输出
+- `release/`：Electron 打包产物输出目录
 
-## Recommended Browser Setup
+## 技术栈
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+- `Vue 3`
+- `Pinia`
+- `Vite`
+- `Electron`
 
-## Customize configuration
+## 常用脚本
 
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
+```bash
 npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
 npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
 npm run build
+npm run preview
+npm run electron:dev
+npm run electron:build
 ```
+
+## 开发说明
+
+- 前端开发模式使用 Vite 本地服务。
+- Electron 开发模式会连接本地开发服务器。
+- 任务和部分状态会持久化到 `localStorage`。
+
